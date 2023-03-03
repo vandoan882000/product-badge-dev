@@ -1,0 +1,117 @@
+{
+  // Files
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "files.associations": {
+    "*.js": "javascript",
+    "*.jsx": "javascriptreact",
+    "*.ts": "typescript",
+    "*.tsx": "typescriptreact"
+  },
+
+  // Editor
+  "editor.fontSize": 14,
+  "editor.fontWeight": "400",
+  "editor.lineHeight": 28,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.fixAll": true
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.inlineSuggest.enabled": true,
+  "editor.rulers": [120],
+  "editor.wordWrap": "on",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Move file
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // Terminal
+  "terminal.integrated.fontSize": 14,
+
+  // Explorer
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+
+  // Workbench
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.startupEditor": "newUntitledFile",
+
+  // Eslint
+  "eslint.workingDirectories": [],
+
+  // Extensions - TODO Highlight
+  "todohighlight.isEnable": true,
+  "todohighlight.keywords": [
+    {
+      "text": "SHOPIFY_APP_TEMPLATE_NODE:",
+      "color": "#DEDEE9",
+      "backgroundColor": "#5E76F1"
+    },
+    {
+      "text": "START_EDIT:",
+      "color": "#26256C",
+      "backgroundColor": "#2AB885"
+    },
+    {
+      "text": "WARNING:",
+      "color": "#26256C",
+      "backgroundColor": "#FBC473"
+    },
+    {
+      "text": "DANGER:",
+      "color": "#26256C",
+      "backgroundColor": "#F57070"
+    },
+    {
+      "text": "NOTE:",
+      "color": "#333333",
+      "backgroundColor": "#EEEEEE"
+    }
+  ],
+
+  // Extensions - Vscode icon
+  "vsicons.associations.folders": [
+    {
+      "icon": "docs",
+      "extensions": [".docs"],
+      "format": "svg"
+    },
+    {
+      "icon": "api",
+      "extensions": ["rest"],
+      "format": "svg"
+    },
+    {
+      "icon": "db",
+      "extensions": ["storage"],
+      "format": "svg"
+    },
+    {
+      "icon": "redux",
+      "extensions": ["store"],
+      "format": "svg"
+    }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

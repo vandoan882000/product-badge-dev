@@ -1,0 +1,3 @@
+- File "index.ts" được thêm nếu quá nhiều thứ được export từ folder đó hoặc 1 folder nào đó có thể module hoá
+- Những folder được gọi là "module" cần có folder docs
+- Những folder có "index.ts" thì file "index.ts" phải được hiển thị ở một vị trí riêng biệt để dễ nhìn => Đặt tên file in hoa nếu có thể, nếu không phải đặt folder riêng và tiếp tục có file "index.ts"

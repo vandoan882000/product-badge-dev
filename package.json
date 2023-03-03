@@ -1,0 +1,77 @@
+{
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "scripts": {
+    "<---------- RUN PRODUCTION ---------->": "",
+    "start": "cross-env NODE_ENV=production node web/dist/index.js",
+    
+    "<---------- RUN BUILD ---------->": "",
+    "prebuild": "cross-env NODE_ENV=production node scripts/generateEnvFiles.js",
+    "build": "shopify app build",
+
+    "<---------- RUN DEV ---------->": "",
+    "predev": "cross-env NODE_ENV=development node scripts/generateEnvFiles.js",
+    "dev": "shopify app dev",
+
+    "<---------- SHOPIFY CLI ---------->": "",
+    "shopify": "shopify",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
+    "environments": "shopify app env pull",
+
+    "<---------- HUSKY SETUP & COMMIT PROMPT ---------->": "",
+    "prepare": "husky install",
+    "husky:commitlint": "npx husky add .husky/commit-msg \"yarn commitlint --edit\"",
+    "husky:lint-staged": "npx husky add .husky/pre-commit \"yarn lint-staged\"",
+    "commit": "git-cz",
+
+    "<---------- LINT-STAGED ---------->": "",
+    "eslint:frontend-cheating": "echo \"Bằng một cách nào đó 'ignorePatterns' có folder 'assets' nhưng nó vẫn match (nếu cho file index.ts vào đó thì nó thả cảnh báo folder bị ignore bởi pattern trong 'ignorePatterns' 😀)\" && eslint ./web/frontend/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache --no-error-on-unmatched-pattern",
+    "eslint:frontend": "eslint ./web/frontend/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache",
+    "eslint:backend": "eslint ./web/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache",
+    "tsc:backend": "tsc --project web/tsconfig.json --noEmit",
+    "tsc:frontend": "tsc --project web/frontend/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@shopify/app": "3.43.0",
+    "@shopify/cli": "3.43.0",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cz-commitlint": "^17.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.51.0",
+    "commitizen": "^4.3.0",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^8.0.3",
+    "inquirer": "8",
+    "lint-staged": "^13.1.1",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "yarn": "^1.22.x",
+    "node": "^16.14.0"
+  },
+  "name": "tuong-shopify-admin-embeded-app-boilerplate",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "lemanh-tuong",
+    "email": "tuonglm.5920@gmail.com",
+    "url": "https://github.com/lemanh-tuong"
+  }
+}

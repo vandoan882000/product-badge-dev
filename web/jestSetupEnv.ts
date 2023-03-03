@@ -1,0 +1,14 @@
+/** START_EDIT: */
+process.env.SHOPIFY_API_KEY = '';
+process.env.SHOPIFY_API_SECRET = '';
+process.env.PORT = '50000';
+process.env.BACKEND_PORT = '50001';
+process.env.API_VERSION = '2023-01';
+process.env.SCOPES =
+  'read_analytics,read_assigned_fulfillment_orders,write_assigned_fulfillment_orders,read_customers,write_customers,read_discounts,write_discounts,read_draft_orders,write_draft_orders,read_files,write_files,read_fulfillments,write_fulfillments,read_gdpr_data_request,read_gift_cards,write_gift_cards,read_inventory,write_inventory,read_legal_policies,write_legal_policies,read_locations,read_marketing_events,write_marketing_events,read_merchant_managed_fulfillment_orders,write_merchant_managed_fulfillment_orders,read_online_store_navigation,read_online_store_pages,write_online_store_pages,read_order_edits,write_order_edits,read_orders,write_orders,read_price_rules,write_price_rules,read_products,write_products,read_product_listings,write_product_listings,read_reports,write_reports,read_resource_feedbacks,write_resource_feedbacks,read_shipping,write_shipping,read_shopify_payments_accounts,read_shopify_payments_bank_accounts,read_shopify_payments_disputes,read_shopify_payments_payouts,read_content,write_content,read_themes,write_themes,read_third_party_fulfillment_orders,write_third_party_fulfillment_orders,read_translations,write_translations';
+process.env.NODE_ENV = 'production';
+
+process.env._____ADDITIONAL_VARIABLE______APP_NAME = 'TUONG_BOILERPLATE';
+process.env._____ADDITIONAL_VARIABLE______APP_EMBED_EXTENSION_UUID = '';
+
+export {};

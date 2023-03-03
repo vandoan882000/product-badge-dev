@@ -1,0 +1,7 @@
+# @name @lemanh-tuong
+# WARNING: Đọc docs nếu muốn customize => @see https://shopify.dev/docs/apps/tools/cli/structure#web-components
+type="backend"
+
+[commands]
+dev = "npm run dev"
+build = "npm run build"
