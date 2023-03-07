@@ -27,3 +27,8 @@ export const PRICING_SERVICE_URL: string = process.env._____ADDITIONAL_VARIABLE_
 
 // SECRETKEY để tạo token bắn lên BE tại những api không có gì để bắn lên cho BE ngoài shopName
 export const SECRET_KEY_OF_SERVICE: string = process.env._____ADDITIONAL_VARIABLE______SECRET_KEY_OF_SERVICE;
+
+// Session storage
+export const SESSION_TOKEN_SERVICE_BASE_URL = process.env._____ADDITIONAL_VARIABLE______SESSION_TOKEN_SERVICE_BASE_URL;
+export const SESSION_TOKEN_SERVICE_SECRET_KEY =
+  process.env._____ADDITIONAL_VARIABLE______SESSION_TOKEN_SERVICE_SECRET_KEY;

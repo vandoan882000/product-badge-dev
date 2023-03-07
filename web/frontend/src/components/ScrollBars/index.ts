@@ -1,2 +1,2 @@
-export { default } from './ScrollBars';
+export { ScrollBars } from './ScrollBars';
 export type { ScrollBarsProps } from './ScrollBars';

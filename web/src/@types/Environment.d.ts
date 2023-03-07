@@ -32,11 +32,19 @@ declare global {
       /** Custom */
       _____ADDITIONAL_VARIABLE______APP_NAME: string;
       _____ADDITIONAL_VARIABLE______APP_EMBED_EXTENSION_UUID?: string;
+
+      // Bulk webhook
       _____ADDITIONAL_VARIABLE______BULK_SERVICE_URL: string;
       _____ADDITIONAL_VARIABLE______BULK_TOKEN_FOR_SERVICE: string;
+
+      // app subscription update webhook
       _____ADDITIONAL_VARIABLE______PRICING_SERVICE_URL: string;
-      _____ADDITIONAL_VARIABLE______SECRET_KEY_OF_SERVICE: string;
+
+      // Uninstall app webhook
       _____ADDITIONAL_VARIABLE______UNINSTALLED_SERVICE_URL: string;
+
+      //  Secret key cho các service của NguyenDttn
+      _____ADDITIONAL_VARIABLE______SECRET_KEY_OF_SERVICE: string;
     }
   }
 }

@@ -30,7 +30,8 @@
     "commit": "git-cz",
 
     "<---------- LINT-STAGED ---------->": "",
-    "eslint:frontend-cheating": "echo \"Bằng một cách nào đó 'ignorePatterns' có folder 'assets' nhưng nó vẫn match (nếu cho file index.ts vào đó thì nó thả cảnh báo folder bị ignore bởi pattern trong 'ignorePatterns' 😀)\" && eslint ./web/frontend/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache --no-error-on-unmatched-pattern",
+    "soft-eslint:frontend": "eslint ./web/frontend/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache --no-error-on-unmatched-pattern",
+    "soft-eslint:backend": "eslint ./web/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache --no-error-on-unmatched-pattern",
     "eslint:frontend": "eslint ./web/frontend/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache",
     "eslint:backend": "eslint ./web/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache",
     "tsc:backend": "tsc --project web/tsconfig.json --noEmit",

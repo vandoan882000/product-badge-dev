@@ -1,6 +1,6 @@
+import { ExitIframe } from 'pages/ExitIframe';
 import { HomePage } from 'pages/HomePage';
 import { InitializationPage } from 'pages/InitializationPage';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { initializationSelector } from 'store/selectors';
@@ -10,6 +10,11 @@ export const pages: Page[] = [
   {
     path: '/',
     component: HomePage,
+  },
+  {
+    path: '/exitiframe',
+    exact: true,
+    component: ExitIframe,
   },
 ];
 

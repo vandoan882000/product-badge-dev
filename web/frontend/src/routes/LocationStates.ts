@@ -26,4 +26,5 @@ export interface LocationStates {
   '/page/account'?: undefined;
   '/page/order'?: undefined;
   '/page/addresses'?: undefined;
+  '/exitiframe'?: undefined;
 }

@@ -1,6 +1,5 @@
 import * as R from 'ramda';
-import { storage } from 'utils/storage';
-import { strToCapitalize } from 'utils/strToCapitalize';
+import { storage, strToCapitalize } from 'utils';
 import { I18n, TransitionDefault } from './types';
 
 export const createI18n = <T extends TransitionDefault>(source: T): I18n<T[keyof T]> => {

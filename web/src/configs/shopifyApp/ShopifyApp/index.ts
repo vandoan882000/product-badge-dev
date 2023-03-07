@@ -22,6 +22,7 @@ type TShopifyApp = ShopifyAppExpress & {
 /**
  * @name @lemanh-tuong
  * DANGER: Những thứ liên quan đến shopify và các service hosting nên không nên update
+ * @see https://github.com/Shopify/shopify-app-js/blob/main/packages/shopify-app-express/docs/reference/shopifyApp.md
  */
 export const ShopifyApp: TShopifyApp = {
   ...shopifyAppExpress({
@@ -56,8 +57,7 @@ export const ShopifyApp: TShopifyApp = {
     sessionStorage: sessionStorage,
     // START_EDIT:
     useOnlineTokens: false,
-    // START_EDIT:
-    exitIframePath: undefined,
+    exitIframePath: '/exitiframe',
   }),
   graphqlController: async (req, res) => {
     try {

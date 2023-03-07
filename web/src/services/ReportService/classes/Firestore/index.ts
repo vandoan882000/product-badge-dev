@@ -38,10 +38,10 @@ export class Firestore implements ReportService {
 
   createReportError: ReportService['createReportError'] = async ({ error, positionError, additionalData }) => {
     const { appName } = this;
-    console.log(`----- START - ErrorReport ${positionError} -----`);
-    console.log(error);
-    console.log(additionalData);
-    console.log(`----- END - ErrorReport ${positionError} -----`);
+    // console.log(`----- START - ErrorReport ${positionError} -----`);
+    // console.log(error);
+    // console.log(additionalData);
+    // console.log(`----- END - ErrorReport ${positionError} -----`);
     try {
       const date = new Date().toLocaleDateString();
       const time = new Date().toLocaleTimeString();

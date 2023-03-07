@@ -1,6 +1,6 @@
 import Button, { ButtonProps } from 'components/Button';
 import ModalHeader from 'components/ModalHeader';
-import ScrollBars from 'components/ScrollBars';
+import { ScrollBars } from 'components/ScrollBars';
 import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { View, ViewProps } from 'wiloke-react-core';
