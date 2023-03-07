@@ -1,0 +1,48 @@
+<div is="magic-badges"></div>
+<script id="JS_MAGIC_BADGE">
+  console.log("Magic badges's initing");
+  const LOAD_SCRIPT____ = () => {
+    const jsFile = !!document.querySelector('script[src*="magic-badges.js"]');
+    const cssFile = !!document.querySelector('link[href*="magic-badges.css"]');
+    console.log("Magic badges script attached DOM");
+    if (!jsFile) {
+      console.log("Magic badges - JS loading");
+      const $scriptEl = document.createElement("script");
+      $scriptEl.type = "text/javascript";
+      $scriptEl.src = "https://s-magic-badge.netlify.app/main.js";
+      $scriptEl.addEventListener("load", () => {
+        console.log("Magic badges - JS loaded");
+      });
+      $scriptEl.addEventListener("error", (e) => {
+        console.log("Magic badges - JS failed", e);
+      });
+      document.body.appendChild($scriptEl);
+    }
+    if(!cssFile) {
+      console.log("Magic badges - CSS loading");
+      const $linkEl = document.createElement("link");
+      $linkEl.rel = "stylesheet";
+      $linkEl.href = "https://s-magic-badge.netlify.app/main.css";
+      $scriptEl.addEventListener("load", () => {
+        console.log("Magic badges - Css loaded");
+      });
+      $scriptEl.addEventListener("error", (e) => {
+        console.log("Magic badges - Css failed", e);
+      });
+      document.body.appendChild($linkEl);
+    }
+  };
+
+  LOAD_SCRIPT____();
+
+
+</script>
+
+{% schema %}
+{
+  "name": "Magic Badges",
+  "target": "body",
+  "javascript": "magic-badges.js",
+  "settings": []
+}
+{% endschema %}
