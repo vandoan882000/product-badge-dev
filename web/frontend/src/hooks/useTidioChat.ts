@@ -8,7 +8,7 @@ export const useTidioChat = () => {
   const handleInitTidioChat = () => {
     setStatusInitialization('loading');
     const tidioScript = document.createElement('script');
-    tidioScript.setAttribute('crossorigin', 'true');
+    tidioScript.setAttribute('async', '');
     tidioScript.src = `//code.tidio.co/${TIDIO_KEY}.js`;
     document.body.appendChild(tidioScript);
     tidioScript.addEventListener('load', () => {
