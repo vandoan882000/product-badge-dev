@@ -8,6 +8,12 @@ import { join } from 'path';
 
 export const app = express();
 
+/** <---------- General Middlewares ----------> */
+// START_EDIT:
+app.use(express.json());
+app.use(compression());
+/** <------------------------------------------------------------------------------------------> */
+
 /**
  * @name @lemanh-tuong
  * DANGER: Những thứ liên quan đến shopify và các service hosting nên không nên update
@@ -28,11 +34,10 @@ app.use(`${baseUrlForApis}/*`, ShopifyApp.validateAuthenticatedSession()); // Al
 app.post(graphqlUrl, ShopifyApp.graphqlController); // Graphql client
 /** <------------------------------------------------------------------------------------------> */
 
-/** <---------- General Middlewares for APIs ----------> */
+/** <---------- APIs ----------> */
 // START_EDIT:
-app.use(express.json());
-app.use(compression());
 app.use(baseUrlForApis, apiRouter);
+/** <------------------------------------------------------------------------------------------> */
 
 /**
  * @name @lemanh-tuong
