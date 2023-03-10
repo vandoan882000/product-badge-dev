@@ -36,7 +36,7 @@ export const ReactApolloProvider: FC<PropsWithChildren> = ({ children }) => {
     link: createHttpLink({
       credentials: 'include',
       headers: requestHeaders,
-      uri: '/api/graphql', // WARNING: Update nếu có sự thay đổi đường dẫn tại folder "backend"
+      uri: '/graphql', // WARNING: Update nếu có sự thay đổi đường dẫn tại folder "backend"
       fetch: userLoggedInFetch(app),
     }),
   });
