@@ -16,6 +16,7 @@
     "allowJs": true,
 
     //
+    "types": ["vite/client"],
     "jsx": "preserve",
     "moduleResolution": "node",
     "target": "ESNext",

@@ -1,3 +1,4 @@
+import { HttpStatusCode } from '@constants';
 import { ApiVersion } from '@shopify/shopify-api';
 import '@shopify/shopify-api/adapters/node';
 import { restResources } from '@shopify/shopify-api/rest/admin/2023-01';
@@ -13,6 +14,7 @@ import {
   webhookUrl,
 } from 'configs/env';
 import { sessionStorage } from 'configs/storage';
+import { reportService } from 'services';
 import { getSessionAfterVerify } from 'utils';
 
 type TShopifyApp = ShopifyAppExpress & {
@@ -65,8 +67,19 @@ export const ShopifyApp: TShopifyApp = {
       const client = new ShopifyApp.api.clients.Graphql({ session });
       const response = await client.query({ data: req.body });
       res.json(response.body);
-    } catch (err) {
-      res.json({});
+    } catch (error) {
+      if (error instanceof Error) {
+        reportService.createReportError({
+          error,
+          positionError: __filename,
+          additionalData: JSON.stringify({ body: req.body, headers: req.headers }),
+        });
+      }
+      res.status(HttpStatusCode.BAD_REQUEST);
+      res.json({
+        message: error,
+        exceptionName: 'Error',
+      } as Express.BaseResponseError);
     }
   },
 };

@@ -11,7 +11,7 @@ class BulkService implements IBulkService {
   pushBulk: IBulkService['pushBulk'] = async ({ shopName, data }) => {
     const { url } = this;
     try {
-      await fetchAPI.request({
+      const response = await fetchAPI.request({
         url,
         method: 'POST',
         headers: {
@@ -20,6 +20,7 @@ class BulkService implements IBulkService {
         },
         data: { shopName, data } as PushBulk_BEExpectParams,
       });
+      console.log(response.data);
       return true;
     } catch (err) {
       reportService.createReportError({

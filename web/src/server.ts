@@ -8,10 +8,6 @@ import { join } from 'path';
 
 export const app = express();
 
-/** <---------- General Middlewares ----------> */
-// START_EDIT:
-app.use(express.json());
-app.use(compression());
 /** <------------------------------------------------------------------------------------------> */
 
 /**
@@ -23,19 +19,23 @@ app.use(compression());
 app.get(ShopifyApp.config.auth.path, ShopifyApp.auth.begin());
 app.get(ShopifyApp.config.auth.callbackPath, ShopifyApp.auth.callback(), ShopifyApp.redirectToShopifyOrAppRoot());
 app.post(ShopifyApp.config.webhooks.path, ShopifyApp.processWebhooks({ webhookHandlers: GDPRWebhookHandlers }));
+app.post(graphqlUrl, express.json(), ShopifyApp.graphqlController); // Graphql client
 /** <------------------------------------------------------------------------------------------> */
 
-/**
- * @name @lemanh-tuong
- * DANGER: Những thứ liên quan đến shopify và các service hosting nên không nên update
- */
-/** <---------- App API ----------> */
-app.use(`${baseUrlForApis}/*`, ShopifyApp.validateAuthenticatedSession()); // All endpoints after this point will require an active session
-app.post(graphqlUrl, ShopifyApp.graphqlController); // Graphql client
-/** <------------------------------------------------------------------------------------------> */
-
-/** <---------- APIs ----------> */
 // START_EDIT:
+/** <---------- APIs - General Middlewares ----------> */
+/**
+ * WARNING:
+    - Các hàm xử lý liên quan đến Shopify đang sử dụng được cung cấp bởi "shopify-api-js" và các hàm này sử dụng "rawRequest" và "rawResponse" để xử lý  
+    ==> Có thể gặp lỗi nếu apply middlewares 
+    - Ví dụ như middleware "express.json" gây lỗi "Processing webhook request | {apiVersion: , domain: , topic: , webhookId: }, Failed to process webhook: Error: No body was received when processing webhook" 
+ */
+app.use(`${baseUrlForApis}/*`, ShopifyApp.validateAuthenticatedSession()); // All endpoints after this point will require an active session
+app.use(`${baseUrlForApis}/*`, express.json(), compression());
+/** <------------------------------------------------------------------------------------------> */
+
+// START_EDIT:
+/** <---------- APIs - Routes ----------> */
 app.use(baseUrlForApis, apiRouter);
 /** <------------------------------------------------------------------------------------------> */
 

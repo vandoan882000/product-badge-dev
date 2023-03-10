@@ -20,13 +20,19 @@ export const scopes =
 
 // Base url các apis sẽ được định nghiax
 export const baseUrlForApis = '/api';
-// Url sẽ lắng nghe webhook shopify bắn về
-export const webhookUrl = `${baseUrlForApis}/webhooks`;
+/**
+ * Url sẽ lắng nghe webhook shopify bắn về
+ * WARNING: Lưu ý các middlwares khi muốn thay đổi giá trị biến này vì:
+    - Các hàm xử lý liên quan đến Shopify đang sử dụng được cung cấp bởi "shopify-api-js" và các hàm này sử dụng "rawRequest" và "rawResponse" để xử lý  
+    ==> Có thể gặp lỗi nếu apply middlewares 
+    - Ví dụ như middleware "express.json" gây lỗi "Processing webhook request | {apiVersion: , domain: , topic: , webhookId: }, Failed to process webhook: Error: No body was received when processing webhook" 
+ */
+export const webhookUrl = `/webhooks`;
 // Url lắng nghe luồng auth của shopify bắn về
-export const authUrl = `${baseUrlForApis}/auth`;
+export const authUrl = `/auth`;
 // Url lắng nghe luồng auth của shopify bắn về
-export const authCallbackUrl = `${baseUrlForApis}/auth/callback`;
+export const authCallbackUrl = `/auth/callback`;
 // Graphql cho client
-export const graphqlUrl = `${baseUrlForApis}/graphql`;
+export const graphqlUrl = `/graphql`;
 
 /** <------------------------------------------------------------------------------------------> */
