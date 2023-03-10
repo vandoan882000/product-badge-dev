@@ -19,7 +19,7 @@ export const app = express();
 app.get(ShopifyApp.config.auth.path, ShopifyApp.auth.begin());
 app.get(ShopifyApp.config.auth.callbackPath, ShopifyApp.auth.callback(), ShopifyApp.redirectToShopifyOrAppRoot());
 app.post(ShopifyApp.config.webhooks.path, ShopifyApp.processWebhooks({ webhookHandlers: GDPRWebhookHandlers }));
-app.post(graphqlUrl, express.json(), ShopifyApp.graphqlController); // Graphql client
+app.post(graphqlUrl, ShopifyApp.validateAuthenticatedSession(), express.json(), ShopifyApp.graphqlController); // Graphql client
 /** <------------------------------------------------------------------------------------------> */
 
 // START_EDIT:
