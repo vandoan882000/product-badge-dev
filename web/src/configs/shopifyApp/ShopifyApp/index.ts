@@ -18,7 +18,7 @@ import { reportService } from 'services';
 import { getSessionAfterVerify } from 'utils';
 
 type TShopifyApp = ShopifyAppExpress & {
-  graphqlController: Express.QueryRequestHandler;
+  graphqlController: Express.MutationRequestHandler<any | Express.BaseResponseError>;
 };
 
 /**
