@@ -73,7 +73,7 @@ class SessionTokenSerice implements ISessionTokenService {
         return this.axiosInstance.request<DeleteSessionToken_Response>({
           method: 'DELETE',
           url: '/myshopkit/v1/ebase/users/publish/session-tokens',
-          data: {
+          params: {
             feIds,
           },
         });
