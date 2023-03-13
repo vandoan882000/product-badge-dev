@@ -29,9 +29,9 @@ export const baseUrlForApis = '/api';
  */
 export const webhookUrl = `/webhooks`;
 // Url lắng nghe luồng auth của shopify bắn về
-export const authUrl = `/auth`;
+export const authUrl = `${baseUrlForApis}/auth`;
 // Url lắng nghe luồng auth của shopify bắn về
-export const authCallbackUrl = `/auth/callback`;
+export const authCallbackUrl = `${baseUrlForApis}/auth/callback`;
 // Graphql cho client
 export const graphqlUrl = `/graphql`;
 
