@@ -2,10 +2,13 @@ import { Redirect } from '@shopify/app-bridge/actions';
 import { useAppBridge } from '@shopify/app-bridge-react';
 import { notification } from 'antd';
 import { AxiosResponse } from 'axios';
+import { Alert } from 'components/Alert';
+import Button from 'components/Button';
 import {
   ACTIVE_FEATURE,
   ACTIVE_LABEL,
   API_CHARGE_URL,
+  APP_NAME,
   DOCUMENTATION,
   ENABLE_NEW_FEATURE,
   FEEDBACK_MAIL,
@@ -149,11 +152,12 @@ export const HomePage = () => {
     themeId,
     currencyFormat,
     appExtensionActived,
+    statusInitialization,
     // statusInitialization
   } = useSelector(initializationSelector);
   const getFeatures = useGetFeatures();
   // Tuong update
-  // const shopify_pagebuilder = `https://${shopDomain}/admin/themes/${themeId}/editor?context=apps`;
+  const shopify_pagebuilder = `https://${shopDomain}/admin/themes/${themeId}/editor?context=apps`;
   const uploadMedia = useUploadMedia();
   const getMedia = useGetMedia();
   const loadMoreMedia = useLoadMoreMedia();
@@ -279,7 +283,9 @@ export const HomePage = () => {
   // InitializationPage
   useEffect(() => {
     pmTemplate.current = postmessage.on('@InitializationPage/getTemplate', () => {
-      postmessage.emit('@InitializationPage/sendTemplate', { template: 'shopify' });
+      postmessage.emit('@InitializationPage/sendTemplate', {
+        template: 'shopify',
+      });
     });
 
     pmYoutube.current = postmessage.on('@InitializationPage/sendYoutubeLink', () => {
@@ -538,7 +544,7 @@ export const HomePage = () => {
         ref={inputRef}
         onChange={handleChange}
       />
-      {/* {statusInitialization === 'success' && !appExtensionActived && (
+      {statusInitialization === 'success' && !appExtensionActived && (
         <Alert
           css={{ margin: '8px 4px' }}
           type="danger"
@@ -546,12 +552,17 @@ export const HomePage = () => {
           message={
             <View>
               <View tagName="p">
-                To complete setup, Enable "{APP_NAME}" to continue <br />"{APP_NAME}" is a embed extension help app that can access your theme to
-                display the "{APP_NAME}" on your store
+                To complete setup, Enable "{APP_NAME}" to continue <br />"{APP_NAME}" is a embed extension help app that
+                can access your theme to display the "{APP_NAME}" on your store
                 <br />
                 We strongly recommend enable to allow this app working properly.
                 <br /> To activate and deactivate app embed blocks please click the{' '}
-                <View tagName="a" css={{ textDecoration: 'underline', fontWeight: 500 }} href={shopify_pagebuilder} target="blank">
+                <View
+                  tagName="a"
+                  css={{ textDecoration: 'underline', fontWeight: 500 }}
+                  href={shopify_pagebuilder}
+                  target="blank"
+                >
                   "Config now"
                 </View>{' '}
                 button below, and press Save from Theme settings
@@ -570,7 +581,7 @@ export const HomePage = () => {
           }
           closable={false}
         />
-      )} */}
+      )}
       <IframePage />
     </View>
   );
