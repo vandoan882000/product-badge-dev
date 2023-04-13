@@ -29,3 +29,5 @@ package-lock.json
 
 # sqlite
 database.sqlite
+
+.DS_Store
