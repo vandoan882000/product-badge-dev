@@ -76,8 +76,7 @@ export const getData: Express.QueryRequestHandler<ResponseSuccess | ResponseErro
           exceptionName: ShopifyRestException.name,
         });
       }
-    }
-    if (error instanceof ShopifyGraphqlException) {
+    } else if (error instanceof ShopifyGraphqlException) {
       reportService.createReportError({
         error: error,
         positionError: __filename,
@@ -88,8 +87,7 @@ export const getData: Express.QueryRequestHandler<ResponseSuccess | ResponseErro
         message: 'Internal Server Error',
         exceptionName: ShopifyGraphqlException.name,
       });
-    }
-    if (error instanceof Error) {
+    } else if (error instanceof Error) {
       reportService.createReportError({
         error: error,
         positionError: __filename,

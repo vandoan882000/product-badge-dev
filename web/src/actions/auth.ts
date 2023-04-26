@@ -35,8 +35,7 @@ export const auth: Express.MutationRequestHandler<ResponseError> | Express.Query
         message: 'Authentication is required',
         exceptionName: SessionAfterVerifyException.name,
       });
-    }
-    if (error instanceof Error) {
+    } else if (error instanceof Error) {
       reportService.createReportError({
         error: error,
         positionError: __filename,

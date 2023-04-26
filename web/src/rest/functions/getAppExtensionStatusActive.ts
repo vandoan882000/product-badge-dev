@@ -54,7 +54,8 @@ export const getAppExtensionStatusActive = async ({
     });
 
     const json_parse = JSON.parse(settings_data.data.asset.value);
-    const blocks = json_parse.current.blocks as Blocks;
+    const current = 'current' in json_parse ? (json_parse.current as Record<string, any>) : undefined;
+    const blocks = current?.blocks as Blocks;
     if (typeof blocks === 'object' && blocks !== null) {
       const disabled = Object.values(blocks).find(block => {
         return block.type.includes(appEmbedExtensionUuid_);
