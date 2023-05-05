@@ -11,4 +11,11 @@ export const initialization = createAsyncAction([
   { isInvalidToken: boolean }
 >();
 
+export const listenAppActiveExtension = createAsyncAction([
+  '@InitializationPage/listenAppActiveExtension/request',
+  '@InitializationPage/listenAppActiveExtension/success',
+  '@InitializationPage/listenAppActiveExtension/failure',
+])<{ appBridge: AppBridge }, { appExtensionActived: boolean }, { isInvalidToken: boolean }>();
+
 export const useInitialization = createDispatchAsyncAction(initialization);
+export const useListenAppActiveExtension = createDispatchAsyncAction(listenAppActiveExtension);

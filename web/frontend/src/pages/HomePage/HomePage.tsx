@@ -21,7 +21,9 @@ import {
   WARNING_TEXT,
   YOUTUBE_LINK,
 } from 'configs/env';
+import useIsTabVisible from 'hooks/useTabVisible';
 import { useTidioChat } from 'hooks/useTidioChat';
+import { useListenAppActiveExtension } from 'pages/InitializationPage/actions/actionInitializationPage';
 import { ChangeEventHandler, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { initializationSelector } from 'store/selectors';
@@ -91,6 +93,8 @@ export const HomePage = () => {
   const redirect = Redirect.create(app);
 
   const getDocument = useGetDocuments();
+  const listenAppExtension = useListenAppActiveExtension();
+  const isChangedTab = useIsTabVisible();
 
   // manual
   const pmFullProduct = useRef<(() => void) | undefined>();
@@ -164,6 +168,13 @@ export const HomePage = () => {
   const deleteMedia = useDeleteMedia();
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isChangedTab && !appExtensionActived && statusInitialization === 'success') {
+      listenAppExtension.request({ appBridge: app });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isChangedTab, app, appExtensionActived, statusInitialization]);
 
   useEffect(() => {
     pmGetDocuments.current = postmessage.on('@Document/getDocuments/request', payload => {

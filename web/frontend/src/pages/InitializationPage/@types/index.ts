@@ -1,5 +1,5 @@
 import { ActionTypes } from 'wiloke-react-core/utils';
-import { initialization } from '../actions/actionInitializationPage';
+import { initialization, listenAppActiveExtension } from '../actions/actionInitializationPage';
 
 export interface State {
   statusInitialization: Status;
@@ -10,6 +10,7 @@ export interface State {
   themeId: number | null;
   appExtensionActived: boolean | null;
   currencyFormat: string;
+  listenAppActiveExtensionStatus: Status;
 }
 
-export type Actions = ActionTypes<typeof initialization>;
+export type Actions = ActionTypes<typeof initialization | typeof listenAppActiveExtension>;
