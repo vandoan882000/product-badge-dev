@@ -6,9 +6,15 @@ interface RetryProps {
   retryText?: string;
   onClick: () => void;
   loading?: boolean;
+  description?: string;
 }
 
-export const Retry: FC<RetryProps> = ({ onClick, retryText = 'Reconnect', loading }) => {
+export const Retry: FC<RetryProps> = ({
+  onClick,
+  retryText = 'Reconnect',
+  loading,
+  description = "We couldn't find your settings. Refresh your browser and make sure the network is connected",
+}) => {
   return (
     <View
       css={{
@@ -872,9 +878,7 @@ export const Retry: FC<RetryProps> = ({ onClick, retryText = 'Reconnect', loadin
           </g>
         </g>
       </svg>
-      <Text css={{ marginTop: '20px' }}>
-        We couldn't find your settings. Refresh your browser and make sure the network is connected
-      </Text>
+      <Text css={{ marginTop: '20px' }}>{description}</Text>
       <Button loading={loading} disabled={loading} size="medium" css={{ marginTop: '4px' }} onClick={onClick}>
         {retryText}
       </Button>

@@ -1,5 +1,6 @@
 export interface LocationStates {
   '/'?: undefined;
+  '/app/:appSlug'?: undefined;
   '/faqs'?: undefined;
   '/pricing'?: undefined;
   '/page'?: undefined;

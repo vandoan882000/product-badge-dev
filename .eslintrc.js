@@ -146,5 +146,13 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/valid-expect': 'error',
   },
-  ignorePatterns: ['**/node_modules/**', '**/dist/**', '**/assets/**', './scripts/**', '**/*.png'],
+  ignorePatterns: [
+    '**/node_modules/**',
+    '**/dist/**',
+    '**/assets/**',
+    './scripts/**',
+    '**/*.png',
+    '**/*.md',
+    '**/*.mov',
+  ],
 };
