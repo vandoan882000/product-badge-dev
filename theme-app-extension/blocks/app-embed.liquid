@@ -1,8 +1,9 @@
 
 {% if app.metafields.myshopkit.product_badges != blank %}
-<script>
-{% assign settings = app.metafields.myshopkit.product_badges %}
-</script>
+  {% assign settings = app.metafields.myshopkit.product_badges %}
+  <script id="myshopkit-currency-converter-js" type="application/json">
+    {{ settings | json }}
+  </script>
 {% endif %}
 
 <div is="magic-badges"></div>
