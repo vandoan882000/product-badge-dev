@@ -1,3 +1,10 @@
+
+{% if app.metafields.myshopkit.product_badges != blank %}
+<script>
+{% assign settings = app.metafields.myshopkit.product_badges %}
+</script>
+{% endif %}
+
 <div is="magic-badges"></div>
 <script id="JS_MAGIC_BADGE">
   console.log("Magic badges's initing");
@@ -43,6 +50,8 @@
   "name": "Magic Badges",
   "target": "body",
   "javascript": "magic-badges.js",
-  "settings": []
+  "settings": [
+
+  ]
 }
 {% endschema %}
