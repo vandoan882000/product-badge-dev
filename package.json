@@ -7,28 +7,23 @@
   "scripts": {
     "<---------- RUN PRODUCTION ---------->": "",
     "start": "cross-env NODE_ENV=production node web/dist/index.js",
-    
     "<---------- RUN BUILD ---------->": "",
     "prebuild": "cross-env NODE_ENV=production node scripts/generateEnvFiles.js",
     "build": "shopify app build",
-
     "<---------- RUN DEV ---------->": "",
     "predev": "cross-env NODE_ENV=development node scripts/generateEnvFiles.js",
     "dev": "shopify app dev",
-
     "<---------- SHOPIFY CLI ---------->": "",
     "shopify": "shopify",
     "info": "shopify app info",
     "generate": "shopify app generate",
     "deploy": "shopify app deploy",
     "environments": "shopify app env pull",
-
     "<---------- HUSKY SETUP & COMMIT PROMPT ---------->": "",
     "prepare": "husky install",
     "husky:commitlint": "npx husky add .husky/commit-msg \"yarn commitlint --edit\"",
     "husky:lint-staged": "npx husky add .husky/pre-commit \"yarn lint-staged\"",
     "commit": "git-cz",
-
     "<---------- LINT-STAGED ---------->": "",
     "soft-eslint:frontend": "eslint ./web/frontend/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache --no-error-on-unmatched-pattern",
     "soft-eslint:backend": "eslint ./web/src/** -c .eslintrc.js --fix --ext ts,tsx,js,jsx --no-cache --no-error-on-unmatched-pattern",
@@ -40,6 +35,7 @@
   "dependencies": {
     "@shopify/app": "3.43.0",
     "@shopify/cli": "3.43.0",
+    "@shopify/shopify-app-session-storage-sqlite": "^2.0.3",
     "cross-env": "^7.0.3"
   },
   "devDependencies": {
@@ -66,7 +62,7 @@
   },
   "engines": {
     "yarn": "^1.22.x",
-    "node": "^16.14.0"
+    "node": "18.17.0"
   },
   "name": "tuong-shopify-admin-embeded-app-boilerplate",
   "license": "UNLICENSED",

@@ -1,23 +1,25 @@
-import { put, retry, takeLatest } from '@redux-saga/core/effects';
-import { AxiosError, AxiosResponse } from 'axios';
-import { API_CURRENT_PLAN } from 'configs/env';
-import { ErrorData, fetchAPI, handleError, postmessage } from 'utils';
+import { put, takeLatest } from '@redux-saga/core/effects';
+import { AxiosError } from 'axios';
+import { ErrorData, handleError, postmessage } from 'utils';
 import { getActionType } from 'wiloke-react-core/utils';
 import { actionGetCurrentPlan } from '../../actions/actionPlans';
-import { CurrentPlanAPIResponse } from '../../PlanAPI';
 
 function* handleGet() {
   try {
-    const response: AxiosResponse<CurrentPlanAPIResponse> = yield retry(3, 500, fetchAPI.request, {
-      baseURL: API_CURRENT_PLAN,
-    });
-    const _dataSuccess = response.data.data;
-    yield put(actionGetCurrentPlan.success({ currentPlan: _dataSuccess.planName }));
+    // const response: AxiosResponse<CurrentPlanAPIResponse> = yield retry(3, 500, fetchAPI.request, {
+    //   baseURL: API_CURRENT_PLAN,
+    // });
+    // const _dataSuccess = response.data.data;
+    yield put(actionGetCurrentPlan.success({ currentPlan: 'Business' }));
     postmessage.emit('@PlanPage/getCurrentPlan/success', {
-      currentPlan: _dataSuccess.planName,
-      currentToggleAutomatic: _dataSuccess.extraInfo.toggleAutomatic,
-      freeTrial: _dataSuccess.trialDays,
-      productPerBadges: _dataSuccess.planInclude.productPerBadges,
+      currentPlan: 'Business',
+      currentToggleAutomatic: true,
+      freeTrial: '15',
+      productPerBadges: {
+        label: "test",
+        name: "a",
+        value: "10",
+      },
     });
   } catch (error) {
     handleError(error as AxiosError<ErrorData> | Error);

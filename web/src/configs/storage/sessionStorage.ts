@@ -1,8 +1,9 @@
 import { Session } from '@shopify/shopify-api';
 import { SessionStorage } from '@shopify/shopify-app-session-storage';
+import { SQLiteSessionStorage } from '@shopify/shopify-app-session-storage-sqlite';
 import { sessionTokenSerice } from 'services/NguyenDttnServices/SessionTokenService';
 
-class CustomSessionStorage implements SessionStorage {
+class _CustomSessionStorage implements SessionStorage {
   storeSession: SessionStorage['storeSession'] = async session => {
     if (session.accessToken) {
       await sessionTokenSerice.updateSessionToken({
@@ -91,8 +92,6 @@ class CustomSessionStorage implements SessionStorage {
   };
 }
 
-// import { SQLiteSessionStorage } from '@shopify/shopify-app-session-storage-sqlite';
-
 // /**
 //      * START_EDIT: Bắt buôc phải update "SessionStorage" thay vì lưu Memory vì
 //      * 1. Shopify chỉ chạy auth - tức chỉ nhận được offline token hoặc online token - khi app được cài hoặc update scopes
@@ -104,6 +103,6 @@ class CustomSessionStorage implements SessionStorage {
 //           4. Người dùng truy cập lại app
 //           5. Các api của app sẽ trả về 403 do hàm "ShopifyApp.validateAuthenticatedSession()" validate - Hàm này sẽ lấy session từ "sessionStorage" mà khi đó Memory bị flush rồi nên sẽ không có nên sẽ là 403 liên tục
 //      */
-// const DB_PATH = `${process.cwd()}/database.sqlite`;
-// export const sessionStorage = new SQLiteSessionStorage(DB_PATH);
-export const sessionStorage = new CustomSessionStorage();
+const DB_PATH = `${process.cwd()}/database.sqlite`;
+export const sessionStorage = new SQLiteSessionStorage(DB_PATH);
+// export const sessionStorage = new CustomSessionStorage();

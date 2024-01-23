@@ -31,6 +31,7 @@ class SessionTokenSerice implements ISessionTokenService {
           data: session,
         });
       });
+      console.log(response);
       console.log(111, response);
       return true;
     } catch (error) {
@@ -94,6 +95,16 @@ class SessionTokenSerice implements ISessionTokenService {
   getSessionTokens: ISessionTokenService['getSessionTokens'] = async ({ feId, shop }) => {
     try {
       const response = await retry(() => {
+        console.log(
+          this.axiosInstance.request<GetSessionTokens_Response>({
+            url: '/myshopkit/v1/ebase/users/publish/session-tokens',
+            params: {
+              feId,
+              shop,
+            },
+          }),
+          111,
+        );
         return this.axiosInstance.request<GetSessionTokens_Response>({
           url: '/myshopkit/v1/ebase/users/publish/session-tokens',
           params: {
